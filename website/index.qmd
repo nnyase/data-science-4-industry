@@ -1,7 +1,5 @@
 ---
 title: "website"
-format: html
-editor: visual
 ---
 
 # Abstract
@@ -30,7 +28,7 @@ For the purpose of the study, the dataset was divided into training, validation,
 
 Figure [1](#fig:TOP15){reference-type="ref" reference="fig:TOP15"} showcases the frequency of the top 15 words used by different presidents in their State of the Nation Addresses (SONA). The data is curated after removing common stop words to highlight words of significance and value in understanding each president's primary focuses and concerns during their respective terms.
 
-![Frequency of the top 15 words used by different presidents in their SONA.](15mostcommon_withoutcommon.png){#fig:TOP15 width="0.8\\linewidth"}
+![Frequency of the top 15 words used by different presidents in their SONA.](15mostcommon_withoutcommon.png){#fig:TOP15 alt="Frequency of the top 15 words used by different presidents in their SONA." width="0.8\\linewidth"}
 
 ### Data Imbalances
 
@@ -38,7 +36,7 @@ Data imbalance refers to a situation in classification tasks where the classes a
 
 ::: {#tab:president_sentences_flipped}
 |                  | **Mandela** | **Mbeki** | **Motlanthe** | **Zuma** | **Ramaphosa** | **de Klerk** |
-|------------------|:-----------:|:---------:|:-------------:|:--------:|:-------------:|:------------:|
+|----------|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
 | **No Sentences** |    1668     |   2397    |      264      |   2629   |     2281      |      97      |
 
 : Number of sentences in SONA speeches for each South African president from 1994 to 2022.
@@ -140,7 +138,7 @@ In the case of the assignment a feedforward neural network is used, where connec
 
 Figure [2](#fig:ffnn){reference-type="ref" reference="fig:ffnn"} illustrates the neural network used in the assignment. The neural network used
 
-![Feed Forward Neural Network used in the assignment](ffnn.png){#fig:ffnn width="0.7\\linewidth"}
+![Feed Forward Neural Network used in the assignment](ffnn.png){#fig:ffnn alt="Feed Forward Neural Network used in the assignment" width="0.7\\linewidth"}
 
 ## Transformers
 
@@ -154,35 +152,35 @@ Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_
 
 ### Bidirectional Encoder Representation Transformer (BERT)
 
-![BERT Model used in assignment](bert_arch.png){#fig:enter-BERT_ARCH width="0.8\\linewidth"}
+![BERT Model used in assignment](bert_arch.png){#fig:enter-BERT_ARCH alt="BERT Model used in assignment" width="0.8\\linewidth"}
 
 # Results
 
 ## Naive Bayes Classification
 
-![Confusion Matrix for the Naive Bayes Classifier](confmatrix_NB.png){#fig:nb width="0.7\\linewidth"}
+![Confusion Matrix for the Naive Bayes Classifier](confmatrix_NB.png){#fig:nb alt="Confusion Matrix for the Naive Bayes Classifier" width="0.7\\linewidth"}
 
 ## Naive Bayes Classification with TF-IDF
 
-![Confusion Matrix for the Naive Bayes Classifier with TF-IDF](conf_nbwp.png){#fig:nbwp width="0.7\\linewidth"}
+![Confusion Matrix for the Naive Bayes Classifier with TF-IDF](conf_nbwp.png){#fig:nbwp alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF" width="0.7\\linewidth"}
 
 ## XGBoost
 
-![Confusion Matrix for the XGBoost Model with TF-IDF](conf_xgboostwp.png){#fig:xgboostresults_pp width="0.7\\linewidth"}
+![Confusion Matrix for the XGBoost Model with TF-IDF](conf_xgboostwp.png){#fig:xgboostresults_pp alt="Confusion Matrix for the XGBoost Model with TF-IDF" width="0.7\\linewidth"}
 
 ## XGBoost with TF-IDF
 
 ## Feed Forward Neural Network
 
-H ![image](lossandtrainingnn.png){width="0.7\\linewidth"}
+H ![image](lossandtrainingnn.png){alt="image" width="0.7\\linewidth"}
 
 ## BERT (Transformer Language Model)
 
-![Validation and Training Loss and Accuracy for Transformer](lossacc.png){#fig:transformer_results width="0.7\\linewidth"}
+![Validation and Training Loss and Accuracy for Transformer](lossacc.png){#fig:transformer_results alt="Validation and Training Loss and Accuracy for Transformer" width="0.7\\linewidth"}
 
 ::: {#tab:accuracy}
 | **Model**                              | **Training Accuracy** | **Test Accuracy** |
-|:---------------------------------------|:---------------------:|:-----------------:|
+|:---------------------------------|:------------------:|:----------------:|
 | Naive Bayes Classifier BoW             |         71.77         |       58.14       |
 | Naive Bayes Classifier with TF-IDF     |         71.76         |       54.67       |
 | XGBoost (BoW)                          |         71.76         |       50.00       |

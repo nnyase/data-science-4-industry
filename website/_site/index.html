@@ -23,25 +23,128 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="quatro_files/libs/clipboard/clipboard.min.js"></script>
-<script src="quatro_files/libs/quarto-html/quarto.js"></script>
-<script src="quatro_files/libs/quarto-html/popper.min.js"></script>
-<script src="quatro_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="quatro_files/libs/quarto-html/anchor.min.js"></script>
-<link href="quatro_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="quatro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="quatro_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="quatro_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="quatro_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="fullcontent">
+<body class="nav-fixed">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">website</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a>
+  <ul class="collapse">
+  <li><a href="#data-imbalances" id="toc-data-imbalances" class="nav-link" data-scroll-target="#data-imbalances">Data Imbalances</a></li>
+  </ul></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing">Preprocessing</a>
+  <ul class="collapse">
+  <li><a href="#bag-of-wordscount-vectorization" id="toc-bag-of-wordscount-vectorization" class="nav-link" data-scroll-target="#bag-of-wordscount-vectorization">Bag of Words/Count Vectorization</a></li>
+  <li><a href="#term-frequency-inverse-document-frequency-tf-idf" id="toc-term-frequency-inverse-document-frequency-tf-idf" class="nav-link" data-scroll-target="#term-frequency-inverse-document-frequency-tf-idf">Term Frequency-Inverse Document Frequency (TF-IDF)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a>
+  <ul class="collapse">
+  <li><a href="#naive-bayes-classifier" id="toc-naive-bayes-classifier" class="nav-link" data-scroll-target="#naive-bayes-classifier">Naive Bayes Classifier</a></li>
+  <li><a href="#xgboost" id="toc-xgboost" class="nav-link" data-scroll-target="#xgboost">XGBoost</a></li>
+  <li><a href="#neural-networks" id="toc-neural-networks" class="nav-link" data-scroll-target="#neural-networks">Neural Networks</a></li>
+  <li><a href="#transformers" id="toc-transformers" class="nav-link" data-scroll-target="#transformers">Transformers</a>
+  <ul class="collapse">
+  <li><a href="#bidirectional-encoder-representation-transformer-bert" id="toc-bidirectional-encoder-representation-transformer-bert" class="nav-link" data-scroll-target="#bidirectional-encoder-representation-transformer-bert">Bidirectional Encoder Representation Transformer (BERT)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#naive-bayes-classification" id="toc-naive-bayes-classification" class="nav-link" data-scroll-target="#naive-bayes-classification">Naive Bayes Classification</a></li>
+  <li><a href="#naive-bayes-classification-with-tf-idf" id="toc-naive-bayes-classification-with-tf-idf" class="nav-link" data-scroll-target="#naive-bayes-classification-with-tf-idf">Naive Bayes Classification with TF-IDF</a></li>
+  <li><a href="#xgboost-1" id="toc-xgboost-1" class="nav-link" data-scroll-target="#xgboost-1">XGBoost</a></li>
+  <li><a href="#xgboost-with-tf-idf" id="toc-xgboost-with-tf-idf" class="nav-link" data-scroll-target="#xgboost-with-tf-idf">XGBoost with TF-IDF</a></li>
+  <li><a href="#feed-forward-neural-network" id="toc-feed-forward-neural-network" class="nav-link" data-scroll-target="#feed-forward-neural-network">Feed Forward Neural Network</a></li>
+  <li><a href="#bert-transformer-language-model" id="toc-bert-transformer-language-model" class="nav-link" data-scroll-target="#bert-transformer-language-model">BERT (Transformer Language Model)</a></li>
+  </ul></li>
+  <li><a href="#discussion-and-conclusion" id="toc-discussion-and-conclusion" class="nav-link" data-scroll-target="#discussion-and-conclusion">Discussion and Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -82,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Figure <a href="#fig:TOP15" data-reference-type="ref" data-reference="fig:TOP15">1</a> showcases the frequency of the top 15 words used by different presidents in their State of the Nation Addresses (SONA). The data is curated after removing common stop words to highlight words of significance and value in understanding each president’s primary focuses and concerns during their respective terms.</p>
 <div id="fig:TOP15" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="15mostcommon_withoutcommon.png" class="img-fluid figure-img"></p>
+<p><img src="15mostcommon_withoutcommon.png" class="img-fluid figure-img" alt="Frequency of the top 15 words used by different presidents in their SONA."></p>
 <p></p><figcaption class="figure-caption">Frequency of the top 15 words used by different presidents in their SONA.</figcaption><p></p>
 </figure>
 </div>
@@ -93,12 +196,12 @@ ul.task-list li input[type="checkbox"] {
 <table class="table">
 <caption>Number of sentences in SONA speeches for each South African president from 1994 to 2022.</caption>
 <colgroup>
-<col style="width: 18%">
-<col style="width: 13%">
-<col style="width: 11%">
-<col style="width: 15%">
-<col style="width: 10%">
-<col style="width: 15%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 <col style="width: 14%">
 </colgroup>
 <thead>
@@ -200,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Figure <a href="#fig:ffnn" data-reference-type="ref" data-reference="fig:ffnn">2</a> illustrates the neural network used in the assignment. The neural network used</p>
 <div id="fig:ffnn" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ffnn.png" class="img-fluid figure-img"></p>
+<p><img src="ffnn.png" class="img-fluid figure-img" alt="Feed Forward Neural Network used in the assignment"></p>
 <p></p><figcaption class="figure-caption">Feed Forward Neural Network used in the assignment</figcaption><p></p>
 </figure>
 </div>
@@ -215,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="bidirectional-encoder-representation-transformer-bert">Bidirectional Encoder Representation Transformer (BERT)</h3>
 <div id="fig:enter-BERT_ARCH" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="bert_arch.png" class="img-fluid figure-img"></p>
+<p><img src="bert_arch.png" class="img-fluid figure-img" alt="BERT Model used in assignment"></p>
 <p></p><figcaption class="figure-caption">BERT Model used in assignment</figcaption><p></p>
 </figure>
 </div>
@@ -228,7 +331,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="naive-bayes-classification">Naive Bayes Classification</h2>
 <div id="fig:nb" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="confmatrix_NB.png" class="img-fluid figure-img"></p>
+<p><img src="confmatrix_NB.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier"></p>
 <p></p><figcaption class="figure-caption">Confusion Matrix for the Naive Bayes Classifier</figcaption><p></p>
 </figure>
 </div>
@@ -237,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="naive-bayes-classification-with-tf-idf">Naive Bayes Classification with TF-IDF</h2>
 <div id="fig:nbwp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="conf_nbwp.png" class="img-fluid figure-img"></p>
+<p><img src="conf_nbwp.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF"></p>
 <p></p><figcaption class="figure-caption">Confusion Matrix for the Naive Bayes Classifier with TF-IDF</figcaption><p></p>
 </figure>
 </div>
@@ -246,7 +349,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="xgboost-1">XGBoost</h2>
 <div id="fig:xgboostresults_pp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="conf_xgboostwp.png" class="img-fluid figure-img"></p>
+<p><img src="conf_xgboostwp.png" class="img-fluid figure-img" alt="Confusion Matrix for the XGBoost Model with TF-IDF"></p>
 <p></p><figcaption class="figure-caption">Confusion Matrix for the XGBoost Model with TF-IDF</figcaption><p></p>
 </figure>
 </div>
@@ -262,7 +365,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="bert-transformer-language-model">BERT (Transformer Language Model)</h2>
 <div id="fig:transformer_results" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lossacc.png" class="img-fluid figure-img"></p>
+<p><img src="lossacc.png" class="img-fluid figure-img" alt="Validation and Training Loss and Accuracy for Transformer"></p>
 <p></p><figcaption class="figure-caption">Validation and Training Loss and Accuracy for Transformer</figcaption><p></p>
 </figure>
 </div>
@@ -270,9 +373,9 @@ ul.task-list li input[type="checkbox"] {
 <table class="table">
 <caption>Training and Test Accuracy of Different Models</caption>
 <colgroup>
-<col style="width: 48%">
-<col style="width: 28%">
-<col style="width: 23%">
+<col style="width: 47%">
+<col style="width: 27%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -327,11 +430,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
 <p>- Word embeddings, As mentioned in the results, we believe that sentence structure is too finite to predict which sequence was said by which president. Therefore, we suffered from Furthermore, other factors that could have been the reason for poor performace are that a hyperparameter search was not conducted with the NN models, due to computational constraints and time constraints. A factor that could have hampered the performance are the fact that the data is unbalanced. Given the fact that deKlerk and Mothlanthe were severely underrepresented in the data, this might have affected the models’ performative ability. To mitigate that an imbalanced dataset resampling methods such as Synthetic Minority Over-sampling Technique (SMOTE) where you create synthetic samples in the dataset for the underrepresented class. Resampling methods are typically beneficial for addressing class imbalances, however they must be used with caution as they may lead to overfitting and loss of information.</p>
+
+
 </section>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
