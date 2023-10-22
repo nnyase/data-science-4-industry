@@ -1,0 +1,31 @@
+{
+    "id": "68B3DAB0",
+    "path": "~/Desktop/MSc/ds4i/data-science-4-industry/website/index.qmd",
+    "project_path": "index.qmd",
+    "type": "quarto_markdown",
+    "hash": "1216588831",
+    "contents": "",
+    "dirty": false,
+    "created": 1698007636961.0,
+    "source_on_save": true,
+    "relative_order": 1,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "16084:8223.5",
+        "cursorPosition": "196,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1698007708,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1698007708633,
+    "read_only": false,
+    "read_only_alternatives": []
+}
