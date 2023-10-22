@@ -39,7 +39,7 @@
     "href": "index.html#neural-networks",
     "title": "website",
     "section": "Neural Networks",
-    "text": "Neural Networks\nNeural networks are a type of deep learning algorithms used for pattern recognition and classification. A neural network is composed of layers of interconnected nodes called neurons. Data enters from the input layer, and as it traverses through the network’s hidden layers, each neuron processes the data, applying a weighted sum and a non-linear activation function. The final layer, known as the output layer, produces the prediction.\nMathematically, for a given neuron, its output \\(y\\) is a function of the weighted sum of its inputs \\(x\\) and its bias \\(b\\). The formula for a single neuron can be represented as:\n\\[y = f\\left( \\sum_{i} w_i x_i + b \\right)\\]\nwhere:\n\n\\(w_i\\) is the weight of the \\(i^{th}\\) input,\n\\(x_i\\) is the \\(i^{th}\\) input,\n\\(b\\) is the bias,\nand \\(f\\) is the activation function, which introduces non-linearity, enabling the network to capture complex patterns.\n\nTraining a neural network involves adjusting the weights and biases using optimization techniques, such as gradient descent, to minimize the error between the predicted and actual outputs.\nIn the case of the assignment a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.\nFigure 2 illustrates the neural network used in the assignment. The neural network used\n\n\n\nFeed Forward Neural Network used in the assignment"
+    "text": "Neural Networks\nNeural networks are a type of deep learning algorithms used for pattern recognition and classification. A neural network is composed of layers of interconnected nodes called neurons. Data enters from the input layer, and as it traverses through the network’s hidden layers, each neuron processes the data, applying a weighted sum and a non-linear activation function. The final layer, known as the output layer, produces the prediction.\nMathematically, for a given neuron, its output \\(y\\) is a function of the weighted sum of its inputs \\(x\\) and its bias \\(b\\). The formula for a single neuron can be represented as:\n\\[y = f\\left( \\sum_{i} w_i x_i + b \\right)\\]\nwhere:\n\n\\(w_i\\) is the weight of the \\(i^{th}\\) input,\n\\(x_i\\) is the \\(i^{th}\\) input,\n\\(b\\) is the bias,\nand \\(f\\) is the activation function, which introduces non-linearity, enabling the network to capture complex patterns.\n\nTraining a neural network involves adjusting the weights and biases using optimization techniques, such as gradient descent, to minimize the error between the predicted and actual outputs.\nIn the case of the assignment, a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.\nTwo neural networks will be compared for this study. The first neural network has 2 layers, and the other neural network has 4 layers with two dropout layers for regularization. Figure 2 illustrates the neural network with two layers used. Moreover, Figure 3 The neural network used Both the neural networks were trained at 50 epoch."
   },
   {
     "objectID": "index.html#transformers",
@@ -53,7 +53,7 @@
     "href": "index.html#naive-bayes-classification",
     "title": "website",
     "section": "Naive Bayes Classification",
-    "text": "Naive Bayes Classification\n\n\n\nConfusion Matrix for the Naive Bayes Classifier"
+    "text": "Naive Bayes Classification\n\nspeak about results for all classification\n\n\n\nConfusion Matrix for the Naive Bayes Classifier"
   },
   {
     "objectID": "index.html#naive-bayes-classification-with-tf-idf",
@@ -103,5 +103,19 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "website",
+    "section": "",
+    "text": "#WRITE AN abstract"
+  },
+  {
+    "objectID": "index.html#image-for-second-neural-network",
+    "href": "index.html#image-for-second-neural-network",
+    "title": "website",
+    "section": "Image for second neural network",
+    "text": "Image for second neural network\n\n\n\nFeed Forward Neural Network used in the assignment"
   }
 ]
