@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "index.html#data-exploration",
+    "href": "index.html#data-exploration",
+    "title": "website",
+    "section": "Data Exploration",
+    "text": "Data Exploration\nFigure 1 showcases the frequency of the top 15 words used by different presidents in their State of the Nation Addresses (SONA). The data is curated after removing common stop words to highlight words of significance and value in understanding each president’s primary focuses and concerns during their respective terms.\n\n\n\nFrequency of the top 15 words used by different presidents in their SONA.\n\n\n\nData Imbalances\nData imbalance refers to a situation in classification tasks where the classes are not represented equally in the dataset. Data imbalance stands as a significant challenge in the context of our assignment as the presidents do not have equal representation in the datasets. This issue becomes evident when examining the distribution of sentences across different South African presidents. For instance, while De Klerk has a mere 97 sentences from one speech, other presidents like Mandela and Ramaphosa exceed 1000 sentences, and both Mbeki and Zuma surpass the 2000 mark. This stark disparity in data distribution can jeopardize the efficacy of our classifiers.\n\n\nNumber of sentences in SONA speeches for each South African president from 1994 to 2022.\n\n\n\n\n\n\n\n\n\n\n\n\nMandela\nMbeki\nMotlanthe\nZuma\nRamaphosa\nde Klerk\n\n\n\n\nNo Sentences\n1668\n2397\n264\n2629\n2281\n97"
+  },
+  {
+    "objectID": "index.html#data-cleaning",
+    "href": "index.html#data-cleaning",
+    "title": "website",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\nIn the assignment, a vital preprocessing step involves cleaning the textual data. We implement functions to standardize and sanitize the text data by undergoing a series of transformations. Initially, the text is converted to lowercase to maintain uniformity. We then eliminate any text within square brackets and strip off URLs, ensuring that the content is free from external links or irrelevant metadata. HTML tags. Moreover, we’ve also incorporated the removal of commonly used words or ‘stop words’ that do not carry significant meaning in the context of text analytics. Furthermore, the text data undergoes stemming using the Snowball Stemmer, a process that trims words down to their base or root form, thereby ensuring different forms of a word are treated as one."
+  },
+  {
+    "objectID": "index.html#preprocessing",
+    "href": "index.html#preprocessing",
+    "title": "website",
+    "section": "Preprocessing",
+    "text": "Preprocessing\nIn the study we will explore into two widely recognized text representation techniques: Bag of Words (BoW) and Term Frequency-Inverse Document Frequency (TFIDF). Preprocessing data using BoW and TFIDF is crucial for machine learning classification because it transforms textual data into numerical vectors, enabling algorithms to effectively identify patterns and relationships. While BoW emphasizes the frequency of words in a document, disregarding the order or structure, TFIDF goes a step further by weighing the terms based on their significance across a collection of documents.\nWe will compare both of the text representation techniques for the Naive Bayes, and XGBoost classifier in the task of identifying which president said which sentence.\n\nBag of Words/Count Vectorization\nBag of words is a technique used in natural language processing and text mining to convert text data into numerical format.\nThis process begins with tokenization, where the text is parsed into individual words or tokens. Following this, a vocabulary of distinct tokens is constructed, serving as a reference point for translating texts into vectors. When encoding text as a vector, the length corresponds to the vocabulary’s size, with each element indicating the frequency of a particular word in the text. For instance, given a vocabulary “apple”, “banana”, “cherry”, the text “apple banana apple” would be vectorized as [2,1,0].\n\n\nTerm Frequency-Inverse Document Frequency (TF-IDF)\nTerm Frequency-Inverse Document Frequency (TF-IDF) is a numerical statistic that reflects the importance of a word in a document relative to a collection or corpus of documents. It is widely used in the domain of information retrieval and text mining.\nTF-IDF is composed of two components:\n\nTerm Frequency (TF): This quantifies how frequently a term appears in a document. It is calculated as: \\[TF(t) = \\frac{\\text{Number of times term } t \\text{ appears in a document}}{\\text{Total number of terms in the document}}\\]\nInverse Document Frequency (IDF): This measures the importance of a term. If a term is frequent across many documents, it may not be a unique identifier and may not be useful in distinguishing between documents. IDF is determined as: \\[IDF(t) = \\log\\left(\\frac{\\text{Total number of documents}}{\\text{Number of documents containing term } t}\\right)\\]\n\nThe product of TF and IDF gives the TF-IDF weight of a term in a document. A high TF-IDF score means the term is significant in the given document when compared to the corpus."
+  },
+  {
+    "objectID": "index.html#naive-bayes-classifier",
+    "href": "index.html#naive-bayes-classifier",
+    "title": "website",
+    "section": "Naive Bayes Classifier",
+    "text": "Naive Bayes Classifier\nGiven a set of features \\(\\mathbf{x}\\) and a target class \\(C\\), the Bayes theorem calculates the posterior probability \\(P(C|\\mathbf{x})\\) as:\n\\[P(C|\\mathbf{x}) = \\frac{P(\\mathbf{x}|C)P(C)}{P(\\mathbf{x})}\\]\nWhere:\n\n\\(P(C|\\mathbf{x})\\) is the posterior probability of class \\(C\\) given the features \\(\\mathbf{x}\\).\n\\(P(\\mathbf{x}|C)\\) is the likelihood of features \\(\\mathbf{x}\\) given class \\(C\\).\n\\(P(C)\\) is the prior probability of class \\(C\\).\n\\(P(\\mathbf{x})\\) is the evidence, which acts as a normalization constant.\n\nIn the Naive Bayes classifier, the likelihood term \\(P(\\mathbf{x}|C)\\) is computed by assuming feature independence and multiplying the individual likelihoods for each feature."
+  },
+  {
+    "objectID": "index.html#xgboost",
+    "href": "index.html#xgboost",
+    "title": "website",
+    "section": "XGBoost",
+    "text": "XGBoost\nXGBoost stands for Extreme Gradient Boosting, and it’s a powerful and efficient implementation of the gradient boosting framework. It’s widely recognized for its performance and speed. XGBoost works by iteratively adding a set of weak learners (usually decision trees) to model the residual errors from previous iterations.\nThe core principle behind XGBoost is to correct the mistakes of the previous trees by focusing more on misclassified points (by assigning them higher weights). This process is achieved through a mathematical framework that involves the calculation of gradient and hessian (second-order gradient) for a given loss function.\nGiven a differentiable loss function \\(l(y, \\hat{y})\\), where \\(y\\) is the true label and \\(\\hat{y}\\) is the predicted label, the objective function \\(\\mathcal{L}\\) to be optimized in each step can be represented as:\n\\[\\mathcal{L} = \\sum_{i=1}^{n} l(y_i, \\hat{y}_i^{(t)}) + \\Omega(f_t)\\]\nWhere:\n\n\\(n\\) is the number of data points.\n\\(\\hat{y}_i^{(t)}\\) is the prediction at the \\(i^{th}\\) iteration.\n\\(\\Omega\\) is the regularization term to prevent overfitting.\n\\(f_t\\) is the model at the \\(t^{th}\\) iteration.\n\nThe regularization term, and its importance in controlling the complexity of individual trees, differentiates XGBoost from other gradient boosting algorithms.\nIn the assignment, we employed the XGBoost model for classification. The model was tuned with a learning rate of 0.1, a maximum depth of 7 for the trees, and an ensemble of 80 estimators. A grid search to search for the optimal hyperparameters can be conducted. However, this is elaborated in the limitations section."
+  },
+  {
+    "objectID": "index.html#neural-networks",
+    "href": "index.html#neural-networks",
+    "title": "website",
+    "section": "Neural Networks",
+    "text": "Neural Networks\nNeural networks are a type of deep learning algorithms used for pattern recognition and classification. A neural network is composed of layers of interconnected nodes called neurons. Data enters from the input layer, and as it traverses through the network’s hidden layers, each neuron processes the data, applying a weighted sum and a non-linear activation function. The final layer, known as the output layer, produces the prediction.\nMathematically, for a given neuron, its output \\(y\\) is a function of the weighted sum of its inputs \\(x\\) and its bias \\(b\\). The formula for a single neuron can be represented as:\n\\[y = f\\left( \\sum_{i} w_i x_i + b \\right)\\]\nwhere:\n\n\\(w_i\\) is the weight of the \\(i^{th}\\) input,\n\\(x_i\\) is the \\(i^{th}\\) input,\n\\(b\\) is the bias,\nand \\(f\\) is the activation function, which introduces non-linearity, enabling the network to capture complex patterns.\n\nTraining a neural network involves adjusting the weights and biases using optimization techniques, such as gradient descent, to minimize the error between the predicted and actual outputs.\nIn the case of the assignment a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.\nFigure 2 illustrates the neural network used in the assignment. The neural network used\n\n\n\nFeed Forward Neural Network used in the assignment"
+  },
+  {
+    "objectID": "index.html#transformers",
+    "href": "index.html#transformers",
+    "title": "website",
+    "section": "Transformers",
+    "text": "Transformers\nTransformers are a type of deep learning architecture introduced by researchers at Google in a 2017 paper titled “Attention is All You Need.” They have become foundational for a range of Natural Language Processing (NLP) tasks, including translation, summarization, and various other applications.\nUnlike traditional recurrent or convolutional layers, Transformers use a self-attention mechanism to weigh input sequences that embed context.\nIn the assignment, we will utilize a pre-trained Bidirectional Encoder Representations from Transformer (BERT) model and engage in a fine-tuning process to adapt it to our specific task, which is to predict which president uttered a given sentence. BERT is a deep learning model for natural language processing tasks, developed by Google. It reads text bidirectionally to understand the context better, which significantly enhances its performance on various NLP tasks.\nFigure 3 demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia\n\nBidirectional Encoder Representation Transformer (BERT)\n\n\n\nBERT Model used in assignment"
+  },
+  {
+    "objectID": "index.html#naive-bayes-classification",
+    "href": "index.html#naive-bayes-classification",
+    "title": "website",
+    "section": "Naive Bayes Classification",
+    "text": "Naive Bayes Classification\n\n\n\nConfusion Matrix for the Naive Bayes Classifier"
+  },
+  {
+    "objectID": "index.html#naive-bayes-classification-with-tf-idf",
+    "href": "index.html#naive-bayes-classification-with-tf-idf",
+    "title": "website",
+    "section": "Naive Bayes Classification with TF-IDF",
+    "text": "Naive Bayes Classification with TF-IDF\n\n\n\nConfusion Matrix for the Naive Bayes Classifier with TF-IDF"
+  },
+  {
+    "objectID": "index.html#xgboost-1",
+    "href": "index.html#xgboost-1",
+    "title": "website",
+    "section": "XGBoost",
+    "text": "XGBoost\n\n\n\nConfusion Matrix for the XGBoost Model with TF-IDF"
+  },
+  {
+    "objectID": "index.html#xgboost-with-tf-idf",
+    "href": "index.html#xgboost-with-tf-idf",
+    "title": "website",
+    "section": "XGBoost with TF-IDF",
+    "text": "XGBoost with TF-IDF"
+  },
+  {
+    "objectID": "index.html#feed-forward-neural-network",
+    "href": "index.html#feed-forward-neural-network",
+    "title": "website",
+    "section": "Feed Forward Neural Network",
+    "text": "Feed Forward Neural Network\nH"
+  },
+  {
+    "objectID": "index.html#bert-transformer-language-model",
+    "href": "index.html#bert-transformer-language-model",
+    "title": "website",
+    "section": "BERT (Transformer Language Model)",
+    "text": "BERT (Transformer Language Model)\n\n\n\nValidation and Training Loss and Accuracy for Transformer\n\n\n\n\nTraining and Test Accuracy of Different Models\n\n\n\n\n\n\n\nModel\nTraining Accuracy\nTest Accuracy\n\n\n\n\nNaive Bayes Classifier BoW\n71.77\n58.14\n\n\nNaive Bayes Classifier with TF-IDF\n71.76\n54.67\n\n\nXGBoost (BoW)\n71.76\n50.00\n\n\nXGBoost with TF-IDF\n71.77\n50.77\n\n\nFeed Forward Neural Network (2 Layers)\n90.64\n67.57\n\n\nFeed Forward Neural Network (4 Layers)\n66.17\n56.51\n\n\nBERT\n-\n-"
+  },
+  {
+    "objectID": "index.html#limitations",
+    "href": "index.html#limitations",
+    "title": "website",
+    "section": "Limitations",
+    "text": "Limitations\n- Word embeddings, As mentioned in the results, we believe that sentence structure is too finite to predict which sequence was said by which president. Therefore, we suffered from Furthermore, other factors that could have been the reason for poor performace are that a hyperparameter search was not conducted with the NN models, due to computational constraints and time constraints. A factor that could have hampered the performance are the fact that the data is unbalanced. Given the fact that deKlerk and Mothlanthe were severely underrepresented in the data, this might have affected the models’ performative ability. To mitigate that an imbalanced dataset resampling methods such as Synthetic Minority Over-sampling Technique (SMOTE) where you create synthetic samples in the dataset for the underrepresented class. Resampling methods are typically beneficial for addressing class imbalances, however they must be used with caution as they may lead to overfitting and loss of information."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]
