@@ -18,7 +18,7 @@
     "href": "index.html#preprocessing",
     "title": "website",
     "section": "Preprocessing",
-    "text": "Preprocessing\nIn the study we will explore into two widely recognized text representation techniques: Bag of Words (BoW) and Term Frequency-Inverse Document Frequency (TFIDF). Preprocessing data using BoW and TFIDF is crucial for machine learning classification because it transforms textual data into numerical vectors, enabling algorithms to effectively identify patterns and relationships. While BoW emphasizes the frequency of words in a document, disregarding the order or structure, TFIDF goes a step further by weighing the terms based on their significance across a collection of documents.\nWe will compare both of the text representation techniques for the Naive Bayes, and XGBoost classifier in the task of identifying which president said which sentence.\n\nBag of Words/Count Vectorization\nBag of words is a technique used in natural language processing and text mining to convert text data into numerical format.\nThis process begins with tokenization, where the text is parsed into individual words or tokens. Following this, a vocabulary of distinct tokens is constructed, serving as a reference point for translating texts into vectors. When encoding text as a vector, the length corresponds to the vocabulary’s size, with each element indicating the frequency of a particular word in the text. For instance, given a vocabulary “apple”, “banana”, “cherry”, the text “apple banana apple” would be vectorized as [2,1,0].\n\n\nTerm Frequency-Inverse Document Frequency (TF-IDF)\nTerm Frequency-Inverse Document Frequency (TF-IDF) is a numerical statistic that reflects the importance of a word in a document relative to a collection or corpus of documents. It is widely used in the domain of information retrieval and text mining.\nTF-IDF is composed of two components:\n\nTerm Frequency (TF): This quantifies how frequently a term appears in a document. It is calculated as: \\[TF(t) = \\frac{\\text{Number of times term } t \\text{ appears in a document}}{\\text{Total number of terms in the document}}\\]\nInverse Document Frequency (IDF): This measures the importance of a term. If a term is frequent across many documents, it may not be a unique identifier and may not be useful in distinguishing between documents. IDF is determined as: \\[IDF(t) = \\log\\left(\\frac{\\text{Total number of documents}}{\\text{Number of documents containing term } t}\\right)\\]\n\nThe product of TF and IDF gives the TF-IDF weight of a term in a document. A high TF-IDF score means the term is significant in the given document when compared to the corpus."
+    "text": "Preprocessing\nIn the study we will explore into two widely recognized text representation techniques: Bag of Words (BoW) and Term Frequency-Inverse Document Frequency (TFIDF). Preprocessing data using BoW and TFIDF is crucial for machine learning classification because it transforms textual data into numerical vectors, enabling algorithms to effectively identify patterns and relationships. While BoW emphasizes the frequency of words in a document, disregarding the order or structure, TFIDF goes a step further by weighing the terms based on their significance across a collection of documents.\nWe will compare both of the text representation techniques for the Naive Bayes, and XGBoost classifier in the task of identifying which president said which sentence.\n\nBag of Words/Count Vectorization\nBag of words is a technique used in natural language processing and text mining to convert text data into numerical format.\nThis process begins with tokenization, where the text is parsed into individual words or tokens. Following this, a vocabulary of distinct tokens is constructed, serving as a reference point for translating texts into vectors. When encoding text as a vector, the length corresponds to the vocabulary’s size, with each element indicating the frequency of a particular word in the text. For instance, given a vocabulary “apple”, “banana”, “cherry”, the text “apple banana apple” would be vectorized as [2,1,0].\n\n\nTerm Frequency-Inverse Document Frequency (TF-IDF)\nTerm Frequency-Inverse Document Frequency (TF-IDF) is a numerical statistic that reflects the importance of a word in a document relative to a collection or corpus of documents. It is widely used in the domain of information retrieval and text mining.\nTF-IDF is composed of two components:\n\nTerm Frequency (TF): This quantifies how frequently a term appears in a document. It is calculated as: \\[TF(t) = \\frac{\\text{Number of times term } t \\text{ appears in a document}}{\\text{Total number of terms in the document}}\\]\nInverse Document Frequency (IDF): This measures the importance of a term. If a term is frequent across many documents, it may not be a unique identifier and may not be useful in distinguishing between documents. IDF is determined as: \\[IDF(t) = \\log\\left(\\frac{\\text{Total number of documents}}{\\text{Number of documents containing term } t}\\right)\\]\n\nThe product of TF and IDF gives the TF-IDF weight of a term in a document. A high TF-IDF score means the term is significant in the given document when compared to the corpus.\n\n\nAttention Masks\nLastly, attention masks were used to train the BERT transformer model. Attention masks serves as a mechanism to control which parts of the input sequence the model should pay attention to during the training or inference process. This involves training the model by predicting the masked word in the sequence for all sequences to learn a representation of the language itself. We utilize these attention masks and the pretrained weights from the BERT uncased Base model and train it on the SONA data in hopes it learns representations to predict which president is associated with which sentence."
   },
   {
     "objectID": "index.html#naive-bayes-classifier",
@@ -46,7 +46,7 @@
     "href": "index.html#transformers",
     "title": "website",
     "section": "Transformers",
-    "text": "Transformers\nTransformers are a type of deep learning architecture introduced by researchers at Google in a 2017 paper titled “Attention is All You Need.” They have become foundational for a range of Natural Language Processing (NLP) tasks, including translation, summarization, and various other applications.\nUnlike traditional recurrent or convolutional layers, Transformers use a self-attention mechanism to weigh input sequences that embed context.\nIn the assignment, we will utilize a pre-trained Bidirectional Encoder Representations from Transformer (BERT) model and engage in a fine-tuning process to adapt it to our specific task, which is to predict which president uttered a given sentence. BERT is a deep learning model for natural language processing tasks, developed by Google. It reads text bidirectionally to understand the context better, which significantly enhances its performance on various NLP tasks.\nFigure 3 demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia\n\nBidirectional Encoder Representation Transformer (BERT)\n\n\n\nBERT Model used in assignment"
+    "text": "Transformers\nTransformers are a type of deep learning architecture introduced by researchers at Google in a 2017 paper titled “Attention is All You Need.” They have become foundational for a range of Natural Language Processing (NLP) tasks, including translation, summarization, and various other applications.\nUnlike traditional recurrent or convolutional layers, Transformers use a self-attention mechanism to weigh input sequences that embed context.\nIn the assignment, we will utilize a pre-trained Bidirectional Encoder Representations from Transformer (BERT) model and engage in a fine-tuning process to adapt it to our specific task, which is to predict which president uttered a given sentence. BERT is a deep learning model for natural language processing tasks, developed by Google. It reads text bidirectionally to understand the context better, which significantly enhances its performance on various NLP tasks.\nFigure 3 demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia. The Bert model ran for 3 epoch and used training attention masks as input.\n\nBidirectional Encoder Representation Transformer (BERT)\n\n\n\nBERT Model used in assignment"
   },
   {
     "objectID": "index.html#naive-bayes-classification",
@@ -74,14 +74,14 @@
     "href": "index.html#xgboost-with-tf-idf",
     "title": "website",
     "section": "XGBoost with TF-IDF",
-    "text": "XGBoost with TF-IDF"
+    "text": "XGBoost with TF-IDF\n\n\n\nConfusion Matrix for XGBoost with TF-IDF"
   },
   {
     "objectID": "index.html#feed-forward-neural-network",
     "href": "index.html#feed-forward-neural-network",
     "title": "website",
     "section": "Feed Forward Neural Network",
-    "text": "Feed Forward Neural Network\nH"
+    "text": "Feed Forward Neural Network\n\n2-layered Neural Network\n\n\n\nTraining and Validation Accuracy and Loss for the 2 layered NN\n\n\n\n\n4-layered Neural Network\n\n\n\nConfusion matrix for the 4-layered neural network"
   },
   {
     "objectID": "index.html#bert-transformer-language-model",
@@ -109,7 +109,7 @@
     "href": "index.html",
     "title": "website",
     "section": "",
-    "text": "#WRITE AN abstract"
+    "text": "In this study, we investigate into the task of author attribution, specifically seeking to identify which South African president pronounced a particular statement in the State of Nations Adress. Various machine learning techniques were tested in the task of author attribution: from Naive Bayes Classifier and XGBoost, trained on both Bag-of-Words (BoW) and Term Frequency-Inverse Document Frequency (TF-IDF) representations, to the two and four-layered neural networks, and the state-of-the-art Bidirectional Encoder Representation Transformer (BERT) model an architecture found in popular large language models. Notably, the two-layered network showcased superior performance, defying our initial expectations. On a broader scale, however, the overall efficacy of our models in accurately attributing statements to presidents remained suboptimal. Key influencing factors identified include imbalanced data representation, particularly for presidents deKlerk and Motlanthe, lack of training datathe finiteness of sentence structure, and the lack of an exhaustive hyperparameter optimization. Despite these challenges, the study sheds light on the difficulties of authorship identification through machine learning and highlights the importance of data representation and model optimization."
   },
   {
     "objectID": "index.html#image-for-second-neural-network",
@@ -117,5 +117,19 @@
     "title": "website",
     "section": "Image for second neural network",
     "text": "Image for second neural network\n\n\n\nFeed Forward Neural Network used in the assignment"
+  },
+  {
+    "objectID": "index.html#naive-bayes-classification-bow",
+    "href": "index.html#naive-bayes-classification-bow",
+    "title": "website",
+    "section": "Naive Bayes Classification (BoW)",
+    "text": "Naive Bayes Classification (BoW)\n\nspeak about results for all classification\n\n\n\nConfusion Matrix for the Naive Bayes Classifier (BoW)"
+  },
+  {
+    "objectID": "index.html#xgboost-bow",
+    "href": "index.html#xgboost-bow",
+    "title": "website",
+    "section": "XGBoost (BoW)",
+    "text": "XGBoost (BoW)\n\n\n\nConfusion Matrix for the XGBoost Model (BOW)"
   }
 ]

@@ -4,7 +4,7 @@ title: "website"
 
 # Abstract
 
-#WRITE AN abstract
+In this study, we investigate into the task of author attribution, specifically seeking to identify which South African president pronounced a particular statement in the State of Nations Adress. Various machine learning techniques were tested in the task of author attribution: from Naive Bayes Classifier and XGBoost, trained on both Bag-of-Words (BoW) and Term Frequency-Inverse Document Frequency (TF-IDF) representations, to the two and four-layered neural networks, and the state-of-the-art Bidirectional Encoder Representation Transformer (BERT) model an architecture found in popular large language models. Notably, the two-layered network showcased superior performance, defying our initial expectations. On a broader scale, however, the overall efficacy of our models in accurately attributing statements to presidents remained suboptimal. Key influencing factors identified include imbalanced data representation, particularly for presidents deKlerk and Motlanthe, lack of training datathe finiteness of sentence structure, and the lack of an exhaustive hyperparameter optimization. Despite these challenges, the study sheds light on the difficulties of authorship identification through machine learning and highlights the importance of data representation and model optimization.
 
 # Introduction
 
@@ -71,6 +71,10 @@ TF-IDF is composed of two components:
 2.  **Inverse Document Frequency (IDF)**: This measures the importance of a term. If a term is frequent across many documents, it may not be a unique identifier and may not be useful in distinguishing between documents. IDF is determined as: $$IDF(t) = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents containing term } t}\right)$$
 
 The product of TF and IDF gives the TF-IDF weight of a term in a document. A high TF-IDF score means the term is significant in the given document when compared to the corpus.
+
+### Attention Masks
+
+Lastly, attention masks were used to train the BERT transformer model. Attention masks serves as a mechanism to control which parts of the input sequence the model should pay attention to during the training or inference process. This involves training the model by predicting the masked word in the sequence for all sequences to learn a representation of the language itself. We utilize these attention masks and the pretrained weights from the BERT uncased Base model and train it on the SONA data in hopes it learns representations to predict which president is associated with which sentence.
 
 # Models
 
@@ -152,7 +156,7 @@ Unlike traditional recurrent or convolutional layers, Transformers use a self-at
 
 In the assignment, we will utilize a pre-trained Bidirectional Encoder Representations from Transformer (BERT) model and engage in a fine-tuning process to adapt it to our specific task, which is to predict which president uttered a given sentence. BERT is a deep learning model for natural language processing tasks, developed by Google. It reads text bidirectionally to understand the context better, which significantly enhances its performance on various NLP tasks.
 
-Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_ARCH"} demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia
+Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_ARCH"} demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia. The Bert model ran for 3 epoch and used training attention masks as input.
 
 ### Bidirectional Encoder Representation Transformer (BERT)
 
@@ -160,25 +164,33 @@ Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_
 
 # Results
 
-## Naive Bayes Classification
+## Naive Bayes Classification (BoW)
 
 ### speak about results for all classification
 
-![Confusion Matrix for the Naive Bayes Classifier](confmatrix_NB.png){#fig:nb alt="Confusion Matrix for the Naive Bayes Classifier" width="0.7\\linewidth"}
+![Confusion Matrix for the Naive Bayes Classifier (BoW)](images/nb.png){#fig:nb alt="Confusion Matrix for the Naive Bayes Classifier" width="0.7\\linewidth"}
 
 ## Naive Bayes Classification with TF-IDF
 
-![Confusion Matrix for the Naive Bayes Classifier with TF-IDF](conf_nbwp.png){#fig:nbwp alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF" width="0.7\\linewidth"}
+![Confusion Matrix for the Naive Bayes Classifier with TF-IDF](images/nb-tfidf.png){#fig:nbwp alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF" width="0.7\\linewidth"}
 
-## XGBoost
+## XGBoost (BoW)
 
-![Confusion Matrix for the XGBoost Model with TF-IDF](conf_xgboostwp.png){#fig:xgboostresults_pp alt="Confusion Matrix for the XGBoost Model with TF-IDF" width="0.7\\linewidth"}
+![Confusion Matrix for the XGBoost Model (BOW)](images/xgb.png){#fig:xgboostresults_pp alt="Confusion Matrix for the XGBoost Model with TF-IDF" width="0.7\\linewidth"}
 
 ## XGBoost with TF-IDF
 
+![Confusion Matrix for XGBoost with TF-IDF](images/xgb-tfidf.png)
+
 ## Feed Forward Neural Network
 
-H ![image](lossandtrainingnn.png){alt="image" width="0.7\\linewidth"}
+### ![](images/nn2.png)2-layered Neural Network
+
+![Training and Validation Accuracy and Loss for the 2 layered NN](images/lossandtrainingnn-01.png){alt="image" width="0.7\\linewidth"}
+
+### 4-layered Neural Network
+
+![Confusion matrix for the 4-layered neural network](images/nn4.png)
 
 ## BERT (Transformer Language Model)
 
@@ -208,4 +220,4 @@ We believe that sentence structure is too finite to predict which sequence was s
 
 Another important factor in the assignment is that a hyperparameter search or a grid search was not performed for any of the above model. This can serve as a possible way to extract a optimal model to predict which president said what statement.
 
-In summary, while the assignment furnishes valuable insights into the potential and pitfalls of utilizing machine learning for author classification, it also highlights the importance of data quality, balance, and comprehensive model optimization. Future works in this domain would benefit from addressing these challenges, ensuring not just algorithmic rigor but also data integrity and representativeness.
+In summary, while the assignment furnishes valuable insights into the potential and pitfalls of utilizing machine learning for author classification, it also highlights the importance of data quality, balance, and comprehensive model optimization. Future works in this domain would benefit from addressing these challenges.
