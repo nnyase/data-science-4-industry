@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "website"
+  title: "Author Attribution using machine and deep learning models"
   navbar:
     left:
       - href: index.qmd

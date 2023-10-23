@@ -3,7 +3,7 @@
     "path": "~/Desktop/MSc/ds4i/data-science-4-industry/website/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "1162367970",
+    "hash": "1813468981",
     "contents": "",
     "dirty": false,
     "created": 1698007637594.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "2,18",
+        "cursorPosition": "5,67",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1698008046,
+    "lastKnownWriteTime": 1698033029,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1698008046910,
+    "last_content_update": 1698033029919,
     "read_only": false,
     "read_only_alternatives": []
 }
