@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -63,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -97,16 +98,72 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a>
+  <ul class="collapse">
+  <li><a href="#data-imbalances" id="toc-data-imbalances" class="nav-link" data-scroll-target="#data-imbalances">Data Imbalances</a></li>
+  </ul></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing">Preprocessing</a>
+  <ul class="collapse">
+  <li><a href="#bag-of-wordscount-vectorization" id="toc-bag-of-wordscount-vectorization" class="nav-link" data-scroll-target="#bag-of-wordscount-vectorization">Bag of Words/Count Vectorization</a></li>
+  <li><a href="#term-frequency-inverse-document-frequency-tf-idf" id="toc-term-frequency-inverse-document-frequency-tf-idf" class="nav-link" data-scroll-target="#term-frequency-inverse-document-frequency-tf-idf">Term Frequency-Inverse Document Frequency (TF-IDF)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a>
+  <ul class="collapse">
+  <li><a href="#naive-bayes-classifier" id="toc-naive-bayes-classifier" class="nav-link" data-scroll-target="#naive-bayes-classifier">Naive Bayes Classifier</a></li>
+  <li><a href="#xgboost" id="toc-xgboost" class="nav-link" data-scroll-target="#xgboost">XGBoost</a></li>
+  <li><a href="#neural-networks" id="toc-neural-networks" class="nav-link" data-scroll-target="#neural-networks">Neural Networks</a></li>
+  <li><a href="#transformers" id="toc-transformers" class="nav-link" data-scroll-target="#transformers">Transformers</a>
+  <ul class="collapse">
+  <li><a href="#bidirectional-encoder-representation-transformer-bert" id="toc-bidirectional-encoder-representation-transformer-bert" class="nav-link" data-scroll-target="#bidirectional-encoder-representation-transformer-bert">Bidirectional Encoder Representation Transformer (BERT)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#naive-bayes-classification" id="toc-naive-bayes-classification" class="nav-link" data-scroll-target="#naive-bayes-classification">Naive Bayes Classification</a></li>
+  <li><a href="#naive-bayes-classification-with-tf-idf" id="toc-naive-bayes-classification-with-tf-idf" class="nav-link" data-scroll-target="#naive-bayes-classification-with-tf-idf">Naive Bayes Classification with TF-IDF</a></li>
+  <li><a href="#xgboost-1" id="toc-xgboost-1" class="nav-link" data-scroll-target="#xgboost-1">XGBoost</a></li>
+  <li><a href="#xgboost-with-tf-idf" id="toc-xgboost-with-tf-idf" class="nav-link" data-scroll-target="#xgboost-with-tf-idf">XGBoost with TF-IDF</a></li>
+  <li><a href="#feed-forward-neural-network" id="toc-feed-forward-neural-network" class="nav-link" data-scroll-target="#feed-forward-neural-network">Feed Forward Neural Network</a></li>
+  <li><a href="#bert-transformer-language-model" id="toc-bert-transformer-language-model" class="nav-link" data-scroll-target="#bert-transformer-language-model">BERT (Transformer Language Model)</a></li>
+  </ul></li>
+  <li><a href="#discussion-and-conclusion" id="toc-discussion-and-conclusion" class="nav-link" data-scroll-target="#discussion-and-conclusion">Discussion and Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Author Attribution using machine and deep learning models</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
+  
+
+</header>
+
 <section id="abstract" class="level1">
 <h1>Abstract</h1>
 </section>
@@ -124,16 +181,16 @@ ul.task-list li input[type="checkbox"] {
 <p>The primary dataset utilized in this study comprises the textual transcripts of the State of the Nation Address (SONA) delivered by various South African presidents from the year 1994 to 2022. These transcripts were sourced from the official government website (<a href="https://www.gov.za/state-nation-address" class="uri">https://www.gov.za/state-nation-address</a>). The presidents represented in the SONA speeches are F.W deKlerk, Nelson Mandela, Thabo Mbeki, Jacob Zuma, K. Montlante and Cyril Ramaphosa.</p>
 <p>For the purpose of the study, the dataset was divided into training, validation, and test sets with proportions of 70%, 10%, and 20% respectively.</p>
 <section id="data-exploration" class="level2">
-<h2 data-anchor-id="data-exploration">Data Exploration</h2>
+<h2 class="anchored" data-anchor-id="data-exploration">Data Exploration</h2>
 <p>Figure <a href="#fig:TOP15" data-reference-type="ref" data-reference="fig:TOP15">1</a> showcases the frequency of the top 15 words used by different presidents in their State of the Nation Addresses (SONA). The data is curated after removing common stop words to highlight words of significance and value in understanding each president’s primary focuses and concerns during their respective terms.</p>
-<div id="fig:TOP15" class="quarto-figure quarto-figure-center">
+<div id="fig:TOP15" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="15mostcommon_withoutcommon.png" class="img-fluid figure-img" alt="Frequency of the top 15 words used by different presidents in their SONA."></p>
 <p></p><figcaption class="figure-caption">Frequency of the top 15 words used by different presidents in their SONA.</figcaption><p></p>
 </figure>
 </div>
 <section id="data-imbalances" class="level3">
-<h3 data-anchor-id="data-imbalances">Data Imbalances</h3>
+<h3 class="anchored" data-anchor-id="data-imbalances">Data Imbalances</h3>
 <p>Data imbalance refers to a situation in classification tasks where the classes are not represented equally in the dataset. Data imbalance stands as a significant challenge in the context of our assignment as the presidents do not have equal representation in the datasets. This issue becomes evident when examining the distribution of sentences across different South African presidents. For instance, while De Klerk has a mere 97 sentences from one speech, other presidents like Mandela and Ramaphosa exceed 1000 sentences, and both Mbeki and Zuma surpass the 2000 mark. This stark disparity in data distribution can jeopardize the efficacy of our classifiers.</p>
 <div id="tab:president_sentences_flipped">
 <table class="table">
@@ -174,20 +231,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="data-cleaning" class="level2">
-<h2 data-anchor-id="data-cleaning">Data Cleaning</h2>
+<h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
 <p>In the assignment, a vital preprocessing step involves cleaning the textual data. We implement functions to standardize and sanitize the text data by undergoing a series of transformations. Initially, the text is converted to lowercase to maintain uniformity. We then eliminate any text within square brackets and strip off URLs, ensuring that the content is free from external links or irrelevant metadata. HTML tags. Moreover, we’ve also incorporated the removal of commonly used words or ‘stop words’ that do not carry significant meaning in the context of text analytics. Furthermore, the text data undergoes stemming using the Snowball Stemmer, a process that trims words down to their base or root form, thereby ensuring different forms of a word are treated as one.</p>
 </section>
 <section id="preprocessing" class="level2">
-<h2 data-anchor-id="preprocessing">Preprocessing</h2>
+<h2 class="anchored" data-anchor-id="preprocessing">Preprocessing</h2>
 <p>In the study we will explore into two widely recognized text representation techniques: Bag of Words (BoW) and Term Frequency-Inverse Document Frequency (TFIDF). Preprocessing data using BoW and TFIDF is crucial for machine learning classification because it transforms textual data into numerical vectors, enabling algorithms to effectively identify patterns and relationships. While BoW emphasizes the frequency of words in a document, disregarding the order or structure, TFIDF goes a step further by weighing the terms based on their significance across a collection of documents.</p>
 <p>We will compare both of the text representation techniques for the Naive Bayes, and XGBoost classifier in the task of identifying which president said which sentence.</p>
 <section id="bag-of-wordscount-vectorization" class="level3">
-<h3 data-anchor-id="bag-of-wordscount-vectorization">Bag of Words/Count Vectorization</h3>
+<h3 class="anchored" data-anchor-id="bag-of-wordscount-vectorization">Bag of Words/Count Vectorization</h3>
 <p>Bag of words is a technique used in natural language processing and text mining to convert text data into numerical format.</p>
 <p>This process begins with tokenization, where the text is parsed into individual words or tokens. Following this, a vocabulary of distinct tokens is constructed, serving as a reference point for translating texts into vectors. When encoding text as a vector, the length corresponds to the vocabulary’s size, with each element indicating the frequency of a particular word in the text. For instance, given a vocabulary “apple”, “banana”, “cherry”, the text “apple banana apple” would be vectorized as [2,1,0].</p>
 </section>
 <section id="term-frequency-inverse-document-frequency-tf-idf" class="level3">
-<h3 data-anchor-id="term-frequency-inverse-document-frequency-tf-idf">Term Frequency-Inverse Document Frequency (TF-IDF)</h3>
+<h3 class="anchored" data-anchor-id="term-frequency-inverse-document-frequency-tf-idf">Term Frequency-Inverse Document Frequency (TF-IDF)</h3>
 <p>Term Frequency-Inverse Document Frequency (TF-IDF) is a numerical statistic that reflects the importance of a word in a document relative to a collection or corpus of documents. It is widely used in the domain of information retrieval and text mining.</p>
 <p>TF-IDF is composed of two components:</p>
 <ol type="1">
@@ -201,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="models" class="level1">
 <h1>Models</h1>
 <section id="naive-bayes-classifier" class="level2">
-<h2 data-anchor-id="naive-bayes-classifier">Naive Bayes Classifier</h2>
+<h2 class="anchored" data-anchor-id="naive-bayes-classifier">Naive Bayes Classifier</h2>
 <p>Given a set of features <span class="math inline">\(\mathbf{x}\)</span> and a target class <span class="math inline">\(C\)</span>, the Bayes theorem calculates the posterior probability <span class="math inline">\(P(C|\mathbf{x})\)</span> as:</p>
 <p><span class="math display">\[P(C|\mathbf{x}) = \frac{P(\mathbf{x}|C)P(C)}{P(\mathbf{x})}\]</span></p>
 <p>Where:</p>
@@ -214,7 +271,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In the Naive Bayes classifier, the likelihood term <span class="math inline">\(P(\mathbf{x}|C)\)</span> is computed by assuming feature independence and multiplying the individual likelihoods for each feature.</p>
 </section>
 <section id="xgboost" class="level2">
-<h2 data-anchor-id="xgboost">XGBoost</h2>
+<h2 class="anchored" data-anchor-id="xgboost">XGBoost</h2>
 <p>XGBoost stands for Extreme Gradient Boosting, and it’s a powerful and efficient implementation of the gradient boosting framework. It’s widely recognized for its performance and speed. XGBoost works by iteratively adding a set of weak learners (usually decision trees) to model the residual errors from previous iterations.</p>
 <p>The core principle behind XGBoost is to correct the mistakes of the previous trees by focusing more on misclassified points (by assigning them higher weights). This process is achieved through a mathematical framework that involves the calculation of gradient and hessian (second-order gradient) for a given loss function.</p>
 <p>Given a differentiable loss function <span class="math inline">\(l(y, \hat{y})\)</span>, where <span class="math inline">\(y\)</span> is the true label and <span class="math inline">\(\hat{y}\)</span> is the predicted label, the objective function <span class="math inline">\(\mathcal{L}\)</span> to be optimized in each step can be represented as:</p>
@@ -230,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In the assignment, we employed the XGBoost model for classification. The model was tuned with a learning rate of 0.1, a maximum depth of 7 for the trees, and an ensemble of 80 estimators. A grid search to search for the optimal hyperparameters can be conducted. However, this is elaborated in the limitations section.</p>
 </section>
 <section id="neural-networks" class="level2">
-<h2 data-anchor-id="neural-networks">Neural Networks</h2>
+<h2 class="anchored" data-anchor-id="neural-networks">Neural Networks</h2>
 <p>Neural networks are a type of deep learning algorithms used for pattern recognition and classification. A neural network is composed of layers of interconnected nodes called neurons. Data enters from the input layer, and as it traverses through the network’s hidden layers, each neuron processes the data, applying a weighted sum and a non-linear activation function. The final layer, known as the output layer, produces the prediction.</p>
 <p>Mathematically, for a given neuron, its output <span class="math inline">\(y\)</span> is a function of the weighted sum of its inputs <span class="math inline">\(x\)</span> and its bias <span class="math inline">\(b\)</span>. The formula for a single neuron can be represented as:</p>
 <p><span class="math display">\[y = f\left( \sum_{i} w_i x_i + b \right)\]</span></p>
@@ -244,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Training a neural network involves adjusting the weights and biases using optimization techniques, such as gradient descent, to minimize the error between the predicted and actual outputs.</p>
 <p>In the case of the assignment a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.</p>
 <p>Figure <a href="#fig:ffnn" data-reference-type="ref" data-reference="fig:ffnn">2</a> illustrates the neural network used in the assignment. The neural network used</p>
-<div id="fig:ffnn" class="quarto-figure quarto-figure-center">
+<div id="fig:ffnn" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="ffnn.png" class="img-fluid figure-img" alt="Feed Forward Neural Network used in the assignment"></p>
 <p></p><figcaption class="figure-caption">Feed Forward Neural Network used in the assignment</figcaption><p></p>
@@ -252,14 +309,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="transformers" class="level2">
-<h2 data-anchor-id="transformers">Transformers</h2>
+<h2 class="anchored" data-anchor-id="transformers">Transformers</h2>
 <p>Transformers are a type of deep learning architecture introduced by researchers at Google in a 2017 paper titled “Attention is All You Need.” They have become foundational for a range of Natural Language Processing (NLP) tasks, including translation, summarization, and various other applications.</p>
 <p>Unlike traditional recurrent or convolutional layers, Transformers use a self-attention mechanism to weigh input sequences that embed context.</p>
 <p>In the assignment, we will utilize a pre-trained Bidirectional Encoder Representations from Transformer (BERT) model and engage in a fine-tuning process to adapt it to our specific task, which is to predict which president uttered a given sentence. BERT is a deep learning model for natural language processing tasks, developed by Google. It reads text bidirectionally to understand the context better, which significantly enhances its performance on various NLP tasks.</p>
 <p>Figure <a href="#fig:enter-BERT_ARCH" data-reference-type="ref" data-reference="fig:enter-BERT_ARCH">3</a> demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia</p>
 <section id="bidirectional-encoder-representation-transformer-bert" class="level3">
-<h3 data-anchor-id="bidirectional-encoder-representation-transformer-bert">Bidirectional Encoder Representation Transformer (BERT)</h3>
-<div id="fig:enter-BERT_ARCH" class="quarto-figure quarto-figure-center">
+<h3 class="anchored" data-anchor-id="bidirectional-encoder-representation-transformer-bert">Bidirectional Encoder Representation Transformer (BERT)</h3>
+<div id="fig:enter-BERT_ARCH" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="bert_arch.png" class="img-fluid figure-img" alt="BERT Model used in assignment"></p>
 <p></p><figcaption class="figure-caption">BERT Model used in assignment</figcaption><p></p>
@@ -271,8 +328,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="results" class="level1">
 <h1>Results</h1>
 <section id="naive-bayes-classification" class="level2">
-<h2 data-anchor-id="naive-bayes-classification">Naive Bayes Classification</h2>
-<div id="fig:nb" class="quarto-figure quarto-figure-center">
+<h2 class="anchored" data-anchor-id="naive-bayes-classification">Naive Bayes Classification</h2>
+<div id="fig:nb" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="confmatrix_NB.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier"></p>
 <p></p><figcaption class="figure-caption">Confusion Matrix for the Naive Bayes Classifier</figcaption><p></p>
@@ -280,8 +337,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="naive-bayes-classification-with-tf-idf" class="level2">
-<h2 data-anchor-id="naive-bayes-classification-with-tf-idf">Naive Bayes Classification with TF-IDF</h2>
-<div id="fig:nbwp" class="quarto-figure quarto-figure-center">
+<h2 class="anchored" data-anchor-id="naive-bayes-classification-with-tf-idf">Naive Bayes Classification with TF-IDF</h2>
+<div id="fig:nbwp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="conf_nbwp.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF"></p>
 <p></p><figcaption class="figure-caption">Confusion Matrix for the Naive Bayes Classifier with TF-IDF</figcaption><p></p>
@@ -289,8 +346,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="xgboost-1" class="level2">
-<h2 data-anchor-id="xgboost-1">XGBoost</h2>
-<div id="fig:xgboostresults_pp" class="quarto-figure quarto-figure-center">
+<h2 class="anchored" data-anchor-id="xgboost-1">XGBoost</h2>
+<div id="fig:xgboostresults_pp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="conf_xgboostwp.png" class="img-fluid figure-img" alt="Confusion Matrix for the XGBoost Model with TF-IDF"></p>
 <p></p><figcaption class="figure-caption">Confusion Matrix for the XGBoost Model with TF-IDF</figcaption><p></p>
@@ -298,15 +355,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="xgboost-with-tf-idf" class="level2">
-<h2 data-anchor-id="xgboost-with-tf-idf">XGBoost with TF-IDF</h2>
+<h2 class="anchored" data-anchor-id="xgboost-with-tf-idf">XGBoost with TF-IDF</h2>
 </section>
 <section id="feed-forward-neural-network" class="level2">
-<h2 data-anchor-id="feed-forward-neural-network">Feed Forward Neural Network</h2>
+<h2 class="anchored" data-anchor-id="feed-forward-neural-network">Feed Forward Neural Network</h2>
 <p>H <img src="lossandtrainingnn.png" class="img-fluid" alt="image"></p>
 </section>
 <section id="bert-transformer-language-model" class="level2">
-<h2 data-anchor-id="bert-transformer-language-model">BERT (Transformer Language Model)</h2>
-<div id="fig:transformer_results" class="quarto-figure quarto-figure-center">
+<h2 class="anchored" data-anchor-id="bert-transformer-language-model">BERT (Transformer Language Model)</h2>
+<div id="fig:transformer_results" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lossacc.png" class="img-fluid figure-img" alt="Validation and Training Loss and Accuracy for Transformer"></p>
 <p></p><figcaption class="figure-caption">Validation and Training Loss and Accuracy for Transformer</figcaption><p></p>
@@ -371,15 +428,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="discussion-and-conclusion" class="level1">
 <h1>Discussion and Conclusion</h1>
 <section id="limitations" class="level2">
-<h2 data-anchor-id="limitations">Limitations</h2>
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
 <p>- Word embeddings, As mentioned in the results, we believe that sentence structure is too finite to predict which sequence was said by which president. Therefore, we suffered from Furthermore, other factors that could have been the reason for poor performace are that a hyperparameter search was not conducted with the NN models, due to computational constraints and time constraints. A factor that could have hampered the performance are the fact that the data is unbalanced. Given the fact that deKlerk and Mothlanthe were severely underrepresented in the data, this might have affected the models’ performative ability. To mitigate that an imbalanced dataset resampling methods such as Synthetic Minority Over-sampling Technique (SMOTE) where you create synthetic samples in the dataset for the underrepresented class. Resampling methods are typically beneficial for addressing class imbalances, however they must be used with caution as they may lead to overfitting and loss of information.</p>
 
 
 </section>
 </section>
-</main>  
-</div>
- <!-- /main -->
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -400,6 +456,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
