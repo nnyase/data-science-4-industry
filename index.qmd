@@ -4,6 +4,8 @@ title: "website"
 
 # Abstract
 
+In this study, we investigate into the task of author attribution, specifically seeking to identify which South African president pronounced a particular statement in the State of Nations Adress. Various machine learning techniques were tested in the task of author attribution: from Naive Bayes Classifier and XGBoost, trained on both Bag-of-Words (BoW) and Term Frequency-Inverse Document Frequency (TF-IDF) representations, to the two and four-layered neural networks, and the state-of-the-art Bidirectional Encoder Representation Transformer (BERT) model an architecture found in popular large language models. Notably, the two-layered network showcased superior performance, defying our initial expectations. On a broader scale, however, the overall efficacy of our models in accurately attributing statements to presidents remained suboptimal. Key influencing factors identified include imbalanced data representation, particularly for presidents deKlerk and Motlanthe, lack of training datathe finiteness of sentence structure, and the lack of an exhaustive hyperparameter optimization. Despite these challenges, the study sheds light on the difficulties of authorship identification through machine learning and highlights the importance of data representation and model optimization.
+
 # Introduction
 
 A State of Nation Address (SONA) is a speech given by the President of South Africa in which the president reports on the status of the nation. It functions as an annual report that include political and socio-economic topics. These include but not limited to topics surrounding the nation's budget, economy, news, agenda, progress, achievements and the president's priorities and legislative proposals. The SONA gives us an idea of broader political landscape and socio-economic issues and challenges that are plaguing the country. At the same time, it also reflect on the achievements and growth and progress the country has made in the past year. Consequently, the nuances in the content, style, and delivery of these addresses provide insightful glimpses into the leadership styles and priorities of different presidents. Thus, developing a machine learning model to figure out which president said a particular statement is avenue to assess the predictive power of these models in a Natural Language Processing task. In addition to this, it may provides insight in linguistic signatures of the various presidents and if they are distinct enough to be identified by a machine learning model.
@@ -36,7 +38,7 @@ Data imbalance refers to a situation in classification tasks where the classes a
 
 ::: {#tab:president_sentences_flipped}
 |                  | **Mandela** | **Mbeki** | **Motlanthe** | **Zuma** | **Ramaphosa** | **de Klerk** |
-|----------|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|-----------|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
 | **No Sentences** |    1668     |   2397    |      264      |   2629   |     2281      |      97      |
 
 : Number of sentences in SONA speeches for each South African president from 1994 to 2022.
@@ -69,6 +71,10 @@ TF-IDF is composed of two components:
 2.  **Inverse Document Frequency (IDF)**: This measures the importance of a term. If a term is frequent across many documents, it may not be a unique identifier and may not be useful in distinguishing between documents. IDF is determined as: $$IDF(t) = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents containing term } t}\right)$$
 
 The product of TF and IDF gives the TF-IDF weight of a term in a document. A high TF-IDF score means the term is significant in the given document when compared to the corpus.
+
+### Attention Masks
+
+Lastly, attention masks were used to train the BERT transformer model. Attention masks serves as a mechanism to control which parts of the input sequence the model should pay attention to during the training or inference process. This involves training the model by predicting the masked word in the sequence for all sequences to learn a representation of the language itself. We utilize these attention masks and the pretrained weights from the BERT uncased Base model and train it on the SONA data in hopes it learns representations to predict which president is associated with which sentence.
 
 # Models
 
@@ -134,9 +140,11 @@ where:
 
 Training a neural network involves adjusting the weights and biases using optimization techniques, such as gradient descent, to minimize the error between the predicted and actual outputs.
 
-In the case of the assignment a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.
+In the case of the assignment, a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.
 
-Figure [2](#fig:ffnn){reference-type="ref" reference="fig:ffnn"} illustrates the neural network used in the assignment. The neural network used
+Two neural networks will be compared for this study. The first neural network has 2 layers, and the other neural network has 4 layers with two dropout layers for regularization. Figure [2](#fig:ffnn){reference-type="ref" reference="fig:ffnn"} illustrates the neural network with two layers used. Moreover, Figure [3](#fig:) The neural network used Both the neural networks were trained at 50 epoch.
+
+## Image for second neural network
 
 ![Feed Forward Neural Network used in the assignment](ffnn.png){#fig:ffnn alt="Feed Forward Neural Network used in the assignment" width="0.7\\linewidth"}
 
@@ -148,7 +156,7 @@ Unlike traditional recurrent or convolutional layers, Transformers use a self-at
 
 In the assignment, we will utilize a pre-trained Bidirectional Encoder Representations from Transformer (BERT) model and engage in a fine-tuning process to adapt it to our specific task, which is to predict which president uttered a given sentence. BERT is a deep learning model for natural language processing tasks, developed by Google. It reads text bidirectionally to understand the context better, which significantly enhances its performance on various NLP tasks.
 
-Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_ARCH"} demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia
+Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_ARCH"} demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia. The Bert model ran for 3 epoch and used training attention masks as input.
 
 ### Bidirectional Encoder Representation Transformer (BERT)
 
@@ -156,23 +164,33 @@ Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_
 
 # Results
 
-## Naive Bayes Classification
+## Naive Bayes Classification (BoW)
 
-![Confusion Matrix for the Naive Bayes Classifier](confmatrix_NB.png){#fig:nb alt="Confusion Matrix for the Naive Bayes Classifier" width="0.7\\linewidth"}
+### speak about results for all classification
+
+![Confusion Matrix for the Naive Bayes Classifier (BoW)](images/nb.png){#fig:nb alt="Confusion Matrix for the Naive Bayes Classifier" width="0.7\\linewidth"}
 
 ## Naive Bayes Classification with TF-IDF
 
-![Confusion Matrix for the Naive Bayes Classifier with TF-IDF](conf_nbwp.png){#fig:nbwp alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF" width="0.7\\linewidth"}
+![Confusion Matrix for the Naive Bayes Classifier with TF-IDF](images/nb-tfidf.png){#fig:nbwp alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF" width="0.7\\linewidth"}
 
-## XGBoost
+## XGBoost (BoW)
 
-![Confusion Matrix for the XGBoost Model with TF-IDF](conf_xgboostwp.png){#fig:xgboostresults_pp alt="Confusion Matrix for the XGBoost Model with TF-IDF" width="0.7\\linewidth"}
+![Confusion Matrix for the XGBoost Model (BOW)](images/xgb.png){#fig:xgboostresults_pp alt="Confusion Matrix for the XGBoost Model with TF-IDF" width="0.7\\linewidth"}
 
 ## XGBoost with TF-IDF
 
+![Confusion Matrix for XGBoost with TF-IDF](images/xgb-tfidf.png)
+
 ## Feed Forward Neural Network
 
-H ![image](lossandtrainingnn.png){alt="image" width="0.7\\linewidth"}
+### ![](images/nn2.png)2-layered Neural Network
+
+![Training and Validation Accuracy and Loss for the 2 layered NN](images/lossandtrainingnn-01.png){alt="image" width="0.7\\linewidth"}
+
+### 4-layered Neural Network
+
+![Confusion matrix for the 4-layered neural network](images/nn4.png)
 
 ## BERT (Transformer Language Model)
 
@@ -180,7 +198,7 @@ H ![image](lossandtrainingnn.png){alt="image" width="0.7\\linewidth"}
 
 ::: {#tab:accuracy}
 | **Model**                              | **Training Accuracy** | **Test Accuracy** |
-|:---------------------------------|:------------------:|:----------------:|
+|:--------------------------------|:------------------:|:-----------------:|
 | Naive Bayes Classifier BoW             |         71.77         |       58.14       |
 | Naive Bayes Classifier with TF-IDF     |         71.76         |       54.67       |
 | XGBoost (BoW)                          |         71.76         |       50.00       |
@@ -194,6 +212,12 @@ H ![image](lossandtrainingnn.png){alt="image" width="0.7\\linewidth"}
 
 # Discussion and Conclusion
 
-## Limitations
+In our investigation, it is noteworthy to mention that the two-layered neural network outperformed its four-layered in both the training and testing datasets, Contrary to our initial anticipation. It's possible that the four-layered network's added complexity rendered it more prone to overfitting, This highlights the notion that a more intricate model isn't neccasilary better in author attribution.
 
-\- Word embeddings, As mentioned in the results, we believe that sentence structure is too finite to predict which sequence was said by which president. Therefore, we suffered from Furthermore, other factors that could have been the reason for poor performace are that a hyperparameter search was not conducted with the NN models, due to computational constraints and time constraints. A factor that could have hampered the performance are the fact that the data is unbalanced. Given the fact that deKlerk and Mothlanthe were severely underrepresented in the data, this might have affected the models' performative ability. To mitigate that an imbalanced dataset resampling methods such as Synthetic Minority Over-sampling Technique (SMOTE) where you create synthetic samples in the dataset for the underrepresented class. Resampling methods are typically beneficial for addressing class imbalances, however they must be used with caution as they may lead to overfitting and loss of information.
+In addition to this, we did not obtain a good model for predicting which president said which sentence. It seems as if the models did not learn any representations for deKlerk or Motlanthe as they both have exteremely low accuracy scores accross the all models. This could have hampered the performance are the fact that the data is unbalanced. Given the fact that deKlerk and Mothlanthe were severely underrepresented in the data, this might have affected the models' performative ability. To mitigate that an imbalanced dataset resampling methods such as Synthetic Minority Over-sampling Technique (SMOTE) where you create synthetic samples in the dataset for the underrepresented class. Resampling methods are typically beneficial for addressing class imbalances.
+
+We believe that sentence structure is too finite to predict which sequence was said by which president. Therefore, we suffered from lack of performance. This means that it is harder for the models to discern which president said which sentences as the sentences were not long enough to extract linguistic properties that may be associated with a certain president.
+
+Another important factor in the assignment is that a hyperparameter search or a grid search was not performed for any of the above model. This can serve as a possible way to extract a optimal model to predict which president said what statement.
+
+In summary, while the assignment furnishes valuable insights into the potential and pitfalls of utilizing machine learning for author classification, it also highlights the importance of data quality, balance, and comprehensive model optimization. Future works in this domain would benefit from addressing these challenges.

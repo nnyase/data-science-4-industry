@@ -116,6 +116,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#bag-of-wordscount-vectorization" id="toc-bag-of-wordscount-vectorization" class="nav-link" data-scroll-target="#bag-of-wordscount-vectorization">Bag of Words/Count Vectorization</a></li>
   <li><a href="#term-frequency-inverse-document-frequency-tf-idf" id="toc-term-frequency-inverse-document-frequency-tf-idf" class="nav-link" data-scroll-target="#term-frequency-inverse-document-frequency-tf-idf">Term Frequency-Inverse Document Frequency (TF-IDF)</a></li>
+  <li><a href="#attention-masks" id="toc-attention-masks" class="nav-link" data-scroll-target="#attention-masks">Attention Masks</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a>
@@ -123,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#naive-bayes-classifier" id="toc-naive-bayes-classifier" class="nav-link" data-scroll-target="#naive-bayes-classifier">Naive Bayes Classifier</a></li>
   <li><a href="#xgboost" id="toc-xgboost" class="nav-link" data-scroll-target="#xgboost">XGBoost</a></li>
   <li><a href="#neural-networks" id="toc-neural-networks" class="nav-link" data-scroll-target="#neural-networks">Neural Networks</a></li>
+  <li><a href="#image-for-second-neural-network" id="toc-image-for-second-neural-network" class="nav-link" data-scroll-target="#image-for-second-neural-network">Image for second neural network</a></li>
   <li><a href="#transformers" id="toc-transformers" class="nav-link" data-scroll-target="#transformers">Transformers</a>
   <ul class="collapse">
   <li><a href="#bidirectional-encoder-representation-transformer-bert" id="toc-bidirectional-encoder-representation-transformer-bert" class="nav-link" data-scroll-target="#bidirectional-encoder-representation-transformer-bert">Bidirectional Encoder Representation Transformer (BERT)</a></li>
@@ -130,17 +132,21 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#naive-bayes-classification" id="toc-naive-bayes-classification" class="nav-link" data-scroll-target="#naive-bayes-classification">Naive Bayes Classification</a></li>
+  <li><a href="#naive-bayes-classification-bow" id="toc-naive-bayes-classification-bow" class="nav-link" data-scroll-target="#naive-bayes-classification-bow">Naive Bayes Classification (BoW)</a>
+  <ul class="collapse">
+  <li><a href="#speak-about-results-for-all-classification" id="toc-speak-about-results-for-all-classification" class="nav-link" data-scroll-target="#speak-about-results-for-all-classification">speak about results for all classification</a></li>
+  </ul></li>
   <li><a href="#naive-bayes-classification-with-tf-idf" id="toc-naive-bayes-classification-with-tf-idf" class="nav-link" data-scroll-target="#naive-bayes-classification-with-tf-idf">Naive Bayes Classification with TF-IDF</a></li>
-  <li><a href="#xgboost-1" id="toc-xgboost-1" class="nav-link" data-scroll-target="#xgboost-1">XGBoost</a></li>
+  <li><a href="#xgboost-bow" id="toc-xgboost-bow" class="nav-link" data-scroll-target="#xgboost-bow">XGBoost (BoW)</a></li>
   <li><a href="#xgboost-with-tf-idf" id="toc-xgboost-with-tf-idf" class="nav-link" data-scroll-target="#xgboost-with-tf-idf">XGBoost with TF-IDF</a></li>
-  <li><a href="#feed-forward-neural-network" id="toc-feed-forward-neural-network" class="nav-link" data-scroll-target="#feed-forward-neural-network">Feed Forward Neural Network</a></li>
+  <li><a href="#feed-forward-neural-network" id="toc-feed-forward-neural-network" class="nav-link" data-scroll-target="#feed-forward-neural-network">Feed Forward Neural Network</a>
+  <ul class="collapse">
+  <li><a href="#layered-neural-network" id="toc-layered-neural-network" class="nav-link" data-scroll-target="#layered-neural-network"><img src="images/nn2.png" class="img-fluid">2-layered Neural Network</a></li>
+  <li><a href="#layered-neural-network-1" id="toc-layered-neural-network-1" class="nav-link" data-scroll-target="#layered-neural-network-1">4-layered Neural Network</a></li>
+  </ul></li>
   <li><a href="#bert-transformer-language-model" id="toc-bert-transformer-language-model" class="nav-link" data-scroll-target="#bert-transformer-language-model">BERT (Transformer Language Model)</a></li>
   </ul></li>
-  <li><a href="#discussion-and-conclusion" id="toc-discussion-and-conclusion" class="nav-link" data-scroll-target="#discussion-and-conclusion">Discussion and Conclusion</a>
-  <ul class="collapse">
-  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
-  </ul></li>
+  <li><a href="#discussion-and-conclusion" id="toc-discussion-and-conclusion" class="nav-link" data-scroll-target="#discussion-and-conclusion">Discussion and Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -166,6 +172,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="abstract" class="level1">
 <h1>Abstract</h1>
+<p>In this study, we investigate into the task of author attribution, specifically seeking to identify which South African president pronounced a particular statement in the State of Nations Adress. Various machine learning techniques were tested in the task of author attribution: from Naive Bayes Classifier and XGBoost, trained on both Bag-of-Words (BoW) and Term Frequency-Inverse Document Frequency (TF-IDF) representations, to the two and four-layered neural networks, and the state-of-the-art Bidirectional Encoder Representation Transformer (BERT) model an architecture found in popular large language models. Notably, the two-layered network showcased superior performance, defying our initial expectations. On a broader scale, however, the overall efficacy of our models in accurately attributing statements to presidents remained suboptimal. Key influencing factors identified include imbalanced data representation, particularly for presidents deKlerk and Motlanthe, lack of training datathe finiteness of sentence structure, and the lack of an exhaustive hyperparameter optimization. Despite these challenges, the study sheds light on the difficulties of authorship identification through machine learning and highlights the importance of data representation and model optimization.</p>
 </section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -253,6 +260,10 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p>The product of TF and IDF gives the TF-IDF weight of a term in a document. A high TF-IDF score means the term is significant in the given document when compared to the corpus.</p>
 </section>
+<section id="attention-masks" class="level3">
+<h3 class="anchored" data-anchor-id="attention-masks">Attention Masks</h3>
+<p>Lastly, attention masks were used to train the BERT transformer model. Attention masks serves as a mechanism to control which parts of the input sequence the model should pay attention to during the training or inference process. This involves training the model by predicting the masked word in the sequence for all sequences to learn a representation of the language itself. We utilize these attention masks and the pretrained weights from the BERT uncased Base model and train it on the SONA data in hopes it learns representations to predict which president is associated with which sentence.</p>
+</section>
 </section>
 </section>
 <section id="models" class="level1">
@@ -299,8 +310,11 @@ ul.task-list li input[type="checkbox"] {
 <li><p>and <span class="math inline">\(f\)</span> is the activation function, which introduces non-linearity, enabling the network to capture complex patterns.</p></li>
 </ul>
 <p>Training a neural network involves adjusting the weights and biases using optimization techniques, such as gradient descent, to minimize the error between the predicted and actual outputs.</p>
-<p>In the case of the assignment a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.</p>
-<p>Figure <a href="#fig:ffnn" data-reference-type="ref" data-reference="fig:ffnn">2</a> illustrates the neural network used in the assignment. The neural network used</p>
+<p>In the case of the assignment, a feedforward neural network is used, where connections between nodes do not form cycles or backpropogate, restricting information to flow in one direction, from input to output.</p>
+<p>Two neural networks will be compared for this study. The first neural network has 2 layers, and the other neural network has 4 layers with two dropout layers for regularization. Figure <a href="#fig:ffnn" data-reference-type="ref" data-reference="fig:ffnn">2</a> illustrates the neural network with two layers used. Moreover, Figure <a href="#fig:">3</a> The neural network used Both the neural networks were trained at 50 epoch.</p>
+</section>
+<section id="image-for-second-neural-network" class="level2">
+<h2 class="anchored" data-anchor-id="image-for-second-neural-network">Image for second neural network</h2>
 <div id="fig:ffnn" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="ffnn.png" class="img-fluid figure-img" alt="Feed Forward Neural Network used in the assignment"></p>
@@ -313,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Transformers are a type of deep learning architecture introduced by researchers at Google in a 2017 paper titled “Attention is All You Need.” They have become foundational for a range of Natural Language Processing (NLP) tasks, including translation, summarization, and various other applications.</p>
 <p>Unlike traditional recurrent or convolutional layers, Transformers use a self-attention mechanism to weigh input sequences that embed context.</p>
 <p>In the assignment, we will utilize a pre-trained Bidirectional Encoder Representations from Transformer (BERT) model and engage in a fine-tuning process to adapt it to our specific task, which is to predict which president uttered a given sentence. BERT is a deep learning model for natural language processing tasks, developed by Google. It reads text bidirectionally to understand the context better, which significantly enhances its performance on various NLP tasks.</p>
-<p>Figure <a href="#fig:enter-BERT_ARCH" data-reference-type="ref" data-reference="fig:enter-BERT_ARCH">3</a> demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia</p>
+<p>Figure <a href="#fig:enter-BERT_ARCH" data-reference-type="ref" data-reference="fig:enter-BERT_ARCH">3</a> demonstrates the model BERT architecture utilized in this assignment. The BERT model was pretrained on BookCorpus, a dataset consisting of 11,038 unpublished books and English Wikipedia. The Bert model ran for 3 epoch and used training attention masks as input.</p>
 <section id="bidirectional-encoder-representation-transformer-bert" class="level3">
 <h3 class="anchored" data-anchor-id="bidirectional-encoder-representation-transformer-bert">Bidirectional Encoder Representation Transformer (BERT)</h3>
 <div id="fig:enter-BERT_ARCH" class="quarto-figure quarto-figure-center anchored">
@@ -327,39 +341,65 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
-<section id="naive-bayes-classification" class="level2">
-<h2 class="anchored" data-anchor-id="naive-bayes-classification">Naive Bayes Classification</h2>
+<section id="naive-bayes-classification-bow" class="level2">
+<h2 class="anchored" data-anchor-id="naive-bayes-classification-bow">Naive Bayes Classification (BoW)</h2>
+<section id="speak-about-results-for-all-classification" class="level3">
+<h3 class="anchored" data-anchor-id="speak-about-results-for-all-classification">speak about results for all classification</h3>
 <div id="fig:nb" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="confmatrix_NB.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier"></p>
-<p></p><figcaption class="figure-caption">Confusion Matrix for the Naive Bayes Classifier</figcaption><p></p>
+<p><img src="images/nb.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier"></p>
+<p></p><figcaption class="figure-caption">Confusion Matrix for the Naive Bayes Classifier (BoW)</figcaption><p></p>
 </figure>
 </div>
+</section>
 </section>
 <section id="naive-bayes-classification-with-tf-idf" class="level2">
 <h2 class="anchored" data-anchor-id="naive-bayes-classification-with-tf-idf">Naive Bayes Classification with TF-IDF</h2>
 <div id="fig:nbwp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="conf_nbwp.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF"></p>
+<p><img src="images/nb-tfidf.png" class="img-fluid figure-img" alt="Confusion Matrix for the Naive Bayes Classifier with TF-IDF"></p>
 <p></p><figcaption class="figure-caption">Confusion Matrix for the Naive Bayes Classifier with TF-IDF</figcaption><p></p>
 </figure>
 </div>
 </section>
-<section id="xgboost-1" class="level2">
-<h2 class="anchored" data-anchor-id="xgboost-1">XGBoost</h2>
+<section id="xgboost-bow" class="level2">
+<h2 class="anchored" data-anchor-id="xgboost-bow">XGBoost (BoW)</h2>
 <div id="fig:xgboostresults_pp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="conf_xgboostwp.png" class="img-fluid figure-img" alt="Confusion Matrix for the XGBoost Model with TF-IDF"></p>
-<p></p><figcaption class="figure-caption">Confusion Matrix for the XGBoost Model with TF-IDF</figcaption><p></p>
+<p><img src="images/xgb.png" class="img-fluid figure-img" alt="Confusion Matrix for the XGBoost Model with TF-IDF"></p>
+<p></p><figcaption class="figure-caption">Confusion Matrix for the XGBoost Model (BOW)</figcaption><p></p>
 </figure>
 </div>
 </section>
 <section id="xgboost-with-tf-idf" class="level2">
 <h2 class="anchored" data-anchor-id="xgboost-with-tf-idf">XGBoost with TF-IDF</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/xgb-tfidf.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Confusion Matrix for XGBoost with TF-IDF</figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="feed-forward-neural-network" class="level2">
 <h2 class="anchored" data-anchor-id="feed-forward-neural-network">Feed Forward Neural Network</h2>
-<p>H <img src="lossandtrainingnn.png" class="img-fluid" alt="image"></p>
+<section id="layered-neural-network" class="level3">
+<h3 class="anchored" data-anchor-id="layered-neural-network"><img src="images/nn2.png" class="img-fluid">2-layered Neural Network</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lossandtrainingnn-01.png" class="img-fluid figure-img" alt="image"></p>
+<p></p><figcaption class="figure-caption">Training and Validation Accuracy and Loss for the 2 layered NN</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="layered-neural-network-1" class="level3">
+<h3 class="anchored" data-anchor-id="layered-neural-network-1">4-layered Neural Network</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/nn4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Confusion matrix for the 4-layered neural network</figcaption><p></p>
+</figure>
+</div>
+</section>
 </section>
 <section id="bert-transformer-language-model" class="level2">
 <h2 class="anchored" data-anchor-id="bert-transformer-language-model">BERT (Transformer Language Model)</h2>
@@ -373,9 +413,9 @@ ul.task-list li input[type="checkbox"] {
 <table class="table">
 <caption>Training and Test Accuracy of Different Models</caption>
 <colgroup>
-<col style="width: 47%">
+<col style="width: 45%">
 <col style="width: 27%">
-<col style="width: 25%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -427,12 +467,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="discussion-and-conclusion" class="level1">
 <h1>Discussion and Conclusion</h1>
-<section id="limitations" class="level2">
-<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
-<p>- Word embeddings, As mentioned in the results, we believe that sentence structure is too finite to predict which sequence was said by which president. Therefore, we suffered from Furthermore, other factors that could have been the reason for poor performace are that a hyperparameter search was not conducted with the NN models, due to computational constraints and time constraints. A factor that could have hampered the performance are the fact that the data is unbalanced. Given the fact that deKlerk and Mothlanthe were severely underrepresented in the data, this might have affected the models’ performative ability. To mitigate that an imbalanced dataset resampling methods such as Synthetic Minority Over-sampling Technique (SMOTE) where you create synthetic samples in the dataset for the underrepresented class. Resampling methods are typically beneficial for addressing class imbalances, however they must be used with caution as they may lead to overfitting and loss of information.</p>
+<p>In our investigation, it is noteworthy to mention that the two-layered neural network outperformed its four-layered in both the training and testing datasets, Contrary to our initial anticipation. It’s possible that the four-layered network’s added complexity rendered it more prone to overfitting, This highlights the notion that a more intricate model isn’t neccasilary better in author attribution.</p>
+<p>In addition to this, we did not obtain a good model for predicting which president said which sentence. It seems as if the models did not learn any representations for deKlerk or Motlanthe as they both have exteremely low accuracy scores accross the all models. This could have hampered the performance are the fact that the data is unbalanced. Given the fact that deKlerk and Mothlanthe were severely underrepresented in the data, this might have affected the models’ performative ability. To mitigate that an imbalanced dataset resampling methods such as Synthetic Minority Over-sampling Technique (SMOTE) where you create synthetic samples in the dataset for the underrepresented class. Resampling methods are typically beneficial for addressing class imbalances.</p>
+<p>We believe that sentence structure is too finite to predict which sequence was said by which president. Therefore, we suffered from lack of performance. This means that it is harder for the models to discern which president said which sentences as the sentences were not long enough to extract linguistic properties that may be associated with a certain president.</p>
+<p>Another important factor in the assignment is that a hyperparameter search or a grid search was not performed for any of the above model. This can serve as a possible way to extract a optimal model to predict which president said what statement.</p>
+<p>In summary, while the assignment furnishes valuable insights into the potential and pitfalls of utilizing machine learning for author classification, it also highlights the importance of data quality, balance, and comprehensive model optimization. Future works in this domain would benefit from addressing these challenges.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

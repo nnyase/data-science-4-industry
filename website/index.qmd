@@ -198,7 +198,7 @@ Figure [3](#fig:enter-BERT_ARCH){reference-type="ref" reference="fig:enter-BERT_
 
 ::: {#tab:accuracy}
 | **Model**                              | **Training Accuracy** | **Test Accuracy** |
-|:---------------------------------|:------------------:|:----------------:|
+|:--------------------------------|:------------------:|:-----------------:|
 | Naive Bayes Classifier BoW             |         71.77         |       58.14       |
 | Naive Bayes Classifier with TF-IDF     |         71.76         |       54.67       |
 | XGBoost (BoW)                          |         71.76         |       50.00       |
